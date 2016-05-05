@@ -54,11 +54,17 @@
             )
         );
         foreach($cursor as $document){
+
+            //$date_add = date("c",strtotime($document["date_add"]));
+            $date_add = $document["date_add"];
+            //$date_add = date('Y-M-d h:i:s', $date_add->sec);
+            $date_add = date('Y-M-d h:i:s', $date_add->sec);
+
             $data .= "<tr>";
             $data .= "<td>" . $document["name"] . "</td>";
             $data .= "<td>" . $document["continent"]."</td>";
             //$data .= "<td>" . date('m d, Y', strtotime(substr($document["date_add"],0,10)))."</td>";
-            $data .= "<td>" . $document["date_add"]."</td>";
+            $data .= "<td>" . substr($date_add,0,11)."</td>";
             $data .= "</tr>";
         }
         $data .= "</tbody>";
