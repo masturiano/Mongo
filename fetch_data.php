@@ -52,11 +52,13 @@
                 //"date_add" => "2016-05-05"
                 "date_add" => array('$gt' => $start, '$lte' => $end),
             )
+        )->sort(
+            array("date_add" => -1)
         );
         foreach($cursor as $document){
 
             //$date_add = date("c",strtotime($document["date_add"]));
-            $date_add = $document["date_add"];
+            echo $date_add = $document["date_add"];
             //$date_add = date('Y-M-d h:i:s', $date_add->sec);
             $date_add = date('Y-M-d h:i:s', $date_add->sec);
 
@@ -75,4 +77,8 @@
         print $mongoException;
         exit;
     }
+
+    echo "<br/>";
+    $date = Date();
+    echo date('Y-m-d',$date);
 ?>
